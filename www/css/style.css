@@ -223,8 +223,8 @@ width: 100%;
 text-align: center;
 overflow: hidden;
 display: block;
-margin-top: 95px;
-margin-bottom: 60px;
+margin-top: 75px;
+margin-bottom: 40px;
 }
 
 @media screen and (max-width:320px) {
@@ -239,7 +239,7 @@ margin-bottom: 60px;
 	text-align: center;
 	overflow: hidden;
 	display: block;
-	margin-top: 30px;
+	margin-top: 0;
 	margin-bottom: 10px;
 }
 
@@ -307,10 +307,7 @@ a.form-links:active {
 	text-decoration: none;
 	color: #dddddd;
 }
-.form-error-msg {
-	color: #dd0000 !important;
-	margin: 0 10px !important;
-}
+
 .error-banner {
 	padding: 10px !important;
 	border: 1px solid #dd0000;
@@ -458,6 +455,7 @@ textarea{
 
 .snack4me {
 	background-color: #4f576e !important;
+	opacity: 0.9 !important;
 }
 
 .item-products {
@@ -508,6 +506,105 @@ textarea{
 .bar.bar-light {
 	background-color: rgba(255,255,255,0) !important; /* or transparent, or background:none */
 	border: none !important;
-	background-size: 100% 0px !important;
+	background-size: 100% 0 !important;
 }
+
+.back-button i {
+	font-size: 1.4em;
+}
+
+.content-padding-extra {
+	padding-left: 1.2em;
+	padding-right: 1.2em;
+}
+
+.input-item-error i {
+	color: #B83E2C;
+}
+
+.div-transparency{
+	/* Fallback for web browsers that don't support RGBa */
+	background-color: rgb(255, 255, 255);
+	/* RGBa with 0.6 opacity */
+	background-color: rgba(255, 255, 255, 0.8);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.label-transparency{
+	margin: 0;
+	border-bottom: 1px #aba6a6 solid;
+}
+
+.first-last-name{
+	float: left;
+}
+
+.last-name{
+	padding-left: 0;
+}
+
+::-webkit-input-placeholder {
+	color: #666 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	color: #666 !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	color: #666 !important;
+}
+
+:-ms-input-placeholder {
+	color: #666 !important;
+}
+
+.input-label {
+	font-size: 14px !important;
+	color: #111;
+	width: 40%;
+}
+.userForm{
+	margin-top: 30px;
+}
+.divider_login {
+	color: white;
+	font-weight: bold;
+	width:100%;
+	margin:0 auto;
+	overflow:hidden;
+	text-align:center;
+	line-height:1.2em;
+	text-transform: lowercase;
+}
+
+h4.divider_login  {
+	font-size: 14px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.divider_login:before, .divider_login:after {
+	content:"";
+	vertical-align:top;
+	display:inline-block;
+	width:50%;
+	height:0.65em;
+	border-bottom:1px solid white;
+	margin:0 2% 0 -55%;
+}
+
+.divider_login:after{
+	margin:0 -55% 0 2%;
+}
+.input-login{
+	width: 25% !important;
+}
+.list-button{
+	margin-top: 0 !important; background: none !important;
+}
+
 

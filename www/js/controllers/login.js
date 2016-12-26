@@ -1,4 +1,4 @@
-starter.controller("LoginCtrl", function($scope, $ionicHistory, $localStorage, $location, AuthService, $ionicModal) {
+starter.controller("LoginCtrl", function($scope, $ionicHistory, $localStorage, $location, AuthService) {
 
 	$scope.user = {};
 
@@ -11,7 +11,7 @@ starter.controller("LoginCtrl", function($scope, $ionicHistory, $localStorage, $
 
 	var lang = AuthService.getLang();
 
-	$scope.loginSnack4me = function() {
+	$scope.login = function() {
 		AuthService.loginSnack4me($scope.user).then(function(response) {
 			if(response.data.error) {
 	            $scope.hasError = true;
@@ -28,21 +28,6 @@ starter.controller("LoginCtrl", function($scope, $ionicHistory, $localStorage, $
 			}
 		});
 	};
-
-	$ionicModal.fromTemplateUrl('templates/login-snack4me.html', {
-		scope: $scope,
-		animation: 'slide-in-up'
-	}).then(function(modal) {
-		$scope.modal = modal
-	});
-
-	$scope.loginWithSnack4me = function() {
-		$scope.modal.show();
-	};
-
-	$scope.$on('$destroy', function() {
-		$scope.modal.remove();
-	});
 
 	$scope.loginFacebook = function() {
 		AuthService.loginFacebook();

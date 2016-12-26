@@ -1,45 +1,75 @@
-<ion-view>
+<ion-view hide-nav-bar="false" class="main">
+
+  <ion-nav-bar class="bar-light bar-transparent">
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-android-arrow-back"></i>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+
   <ion-content>
-    <div class="snack4me-signup-logo">
-      <img src="img/ui/logo.svg" style="width: 50%;" />
-    </div>
-    <ng-form name="userForm">
-      <div class="list list-inset"  style="margin-top: 0 !important;">
-        <label class="item item-input">
-          <i ng-class="{ 'balanced' : (userForm.name.$valid) }" class="icon ion-person placeholder-icon"></i>
-          <input type="text" name="name" ng-model="formData.name" placeholder="{{ 'NAME' | translate }}" required>
-          <div ng-show="userForm.name.$invalid" class="form-error-msg">{{ 'REQUIRE_NAME' | translate }}</div>
-        </label>
-        <label class="item item-input">
-          <i ng-class="{ 'balanced' : (userForm.email.$valid && userForm.email.$dirty) }" class="icon ion-email placeholder-icon"></i>
-          <input type="email" name="email" ng-model="formData.email" placeholder="E-mail" required>
-          <div ng-show="userForm.email.$invalid && userForm.email.$dirty" class="form-error-msg">{{ 'REQUIRE_EMAIL' | translate }}</div>
-        </label>
-        <label class="item item-input">
-          <i ng-class="{ 'balanced' : ((formData.emailConfirm === formData.email) && userForm.emailConfirm.$dirty) }" class="icon ion-checkmark placeholder-icon"></i>
-          <input type="email" name="emailConfirm" ng-model="formData.emailConfirm" placeholder="{{ 'CONFIRM_EMAIL' | translate }}" required>
-          <div ng-show="(formData.emailConfirm !== formData.email) && userForm.emailConfirm.$dirty" class="form-error-msg">{{ 'CONFIRM_REQUIRE_EMAIL' | translate }}</div>
-        </label>
-        <label class="item item-input">
-          <i ng-class="{ 'balanced' : userForm.password.$valid }" class="icon ion-locked placeholder-icon"></i>
-          <input type="password" name="password" ng-model="formData.password" placeholder="{{ 'PASSWORD' | translate }}" ng-minlength="6" ng-maxlength="15" required>
-          <div ng-show="userForm.password.$invalid && userForm.password.$dirty" class="form-error-msg">{{ 'REQUIRE_PASSWORD' | translate }}</div>
-        </label>
-        <label class="item item-input">
-          <i ng-class="{ 'balanced' : ((formData.password === formData.passwordConfirm) && userForm.passwordConfirm.$dirty) }" class="icon ion-checkmark placeholder-icon"></i>
-          <input type="password" name="passwordConfirm" ng-model="formData.passwordConfirm" placeholder="{{ 'CONFIRM_PASSWORD' | translate }}" ng-minlength="6" ng-maxlength="15" required>
-          <div ng-show="(formData.password !== formData.passwordConfirm) && userForm.passwordConfirm.$dirty" class="form-error-msg">{{ 'CONFIRM_REQUIRE_PASSWORD' | translate }}</div>
-        </label>
-        <button class="button button-block button-positive snack4me" ng-click="submitForm(userForm.$valid)" ng-disabled="formHasErrors(userForm.$valid)">
+    <div class="content-padding-extra">
+      <div class="snack4me-signup-logo">
+        <img src="img/ui/logo.svg" style="width: 50%;" />
+      </div>
+      <form class="userForm" name="userForm" novalidate>
+        <div class="div-transparency">
+          <label class="item-input first-last-name label-transparency" ng-class="{'has-error': userForm.$submitted && userForm['formData.name'].$error}">
+            <input type="text" name="name" ng-model="formData.name" placeholder="{{ 'NAME' | translate }}" required>
+          </label>
+          <label class="item-input last-name label-transparency" ng-class="{'has-error': userForm.$submitted && userForm['formData.last_name'].$error}">
+            <input type="text" name="last_name" ng-model="formData.last_name" placeholder="{{ 'LAST_NAME' | translate }}" required>
+          </label>
+          <p class="input-item-error" ng-show="userForm.$submitted && userForm['formData.name'].$error.$invalid">{{ 'REQUIRE_NAME' | translate }}</p>
+          <p class="input-item-error" ng-show="userForm.$submitted && userForm['formData.last_name'].$error.$invalid">{{ 'REQUIRE_LAST_NAME' | translate }}</p>
+        </div>
+
+        <div class="div-transparency">
+          <label class="item-input label-transparency" ng-class="{'has-error': userForm.$submitted && userForm['formData.email'].$error}">
+            <span class="input-label">E-mail</span>
+            <input type="email" name="email" ng-model="formData.email" required>
+          </label>
+          <p class="input-item-error" ng-show="userForm.$submitted && userForm['formData.email'].$error.$invalid">{{ 'REQUIRE_EMAIL' | translate }}</p>
+        </div>
+
+        <div class="div-transparency">
+          <label class="item-input label-transparency" ng-class="{'has-error': userForm.$submitted && userForm['formData.birthday'].$error}">
+            <span class="input-label">{{ 'BIRTHDAY' | translate }}</span>
+            <input type="text" name="birthday" ng-model="formData.birthday" required>
+          </label>
+          <p class="input-item-error" ng-show="userForm.$submitted && userForm['formData.birthday'].$error.$invalid">{{ 'REQUIRE_BIRTHDAY' | translate }}</p>
+        </div>
+
+        <div class="div-transparency">
+          <label class="item-input label-transparency" ng-class="{'has-error': userForm.$submitted && userForm['formData.phone'].$error}">
+            <span class="input-label">{{ 'PHONE' | translate }}</span>
+            <input type="text" name="phone" ng-model="formData.phone" required>
+          </label>
+          <p class="input-item-error" ng-show="userForm.$submitted && userForm['formData.phone'].$error.$invalid">{{ 'REQUIRE_PHONE' | translate }}</p>
+        </div>
+
+        <div class="div-transparency">
+          <label class="item-input label-transparency" ng-class="{'has-error': userForm.$submitted && userForm['formData.password'].$error}">
+            <span class="input-label">{{ 'PASSWORD' | translate }}</span>
+            <input type="password" name="password" ng-model="formData.password" ng-minlength="6" ng-maxlength="15" required>
+          </label>
+          <p class="input-item-error" ng-show="userForm.$submitted && userForm['formData.password'].$error.$invalid">{{ 'REQUIRE_PASSWORD' | translate }}</p>
+        </div>
+
+        <div class="div-transparency">
+          <label class="item-input label-transparency" ng-class="{ 'balanced' : ((formData.password === formData.passwordConfirm) && userForm.passwordConfirm.$dirty) }">
+            <span class="input-label">{{ 'CONFIRM_PASSWORD' | translate }}</span>
+            <input type="password" name="passwordConfirm" ng-model="formData.passwordConfirm" ng-minlength="6" ng-maxlength="15" required>
+          </label>
+          <p class="input-item-error" ng-show="(formData.password !== formData.passwordConfirm) && userForm.passwordConfirm.$dirty">{{ 'CONFIRM_REQUIRE_PASSWORD' | translate }}</p>
+        </div>
+
+        <button class="button button-block button-positive snack4me" ng-click="submitForm(userForm.$valid)">
           {{ 'SIGN UP' | translate }}
         </button>
-        <a class="button button-block button-positive snack4me" href="#/login">
-          {{ 'CANCEL' | translate }}
-        </a>
         <div ng-show="hasError" class="error-banner">
           {{ errorMsg }}
         </div>
-      </div>
-    </ng-form>
+      </form>
+    </div>
   </ion-content>
 </ion-view>
